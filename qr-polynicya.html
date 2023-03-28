@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mon Peti Полуниця</title>
+    <meta charset="utf-8">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            overflow: hidden;
+        }
+        .video-container {
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #000000;
+        }
+        .video-container video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            width: 97%;
+            height: 95%;
+        }
+        .content-container {
+            position: absolute;
+            z-index: 2;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+        }
+        .content-container img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 100%;
+           
+        }
+        .show-content .content-container {
+            opacity: 1;
+        }
+
+		@media  (max-width: 390px) {
+            #video-container {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 120%;
+                height: 200%;
+                background-color: black;
+                z-index: 1;
+                overflow: hidden;
+            }
+            video {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                min-width: 100%;
+                min-height: 100%;
+                width: auto;
+                height: 200%;
+                z-index: -1;
+                opacity: 0;
+                transition: opacity 2s ease-in-out;
+            }
+            .loaded #video-container video {
+                opacity: 1;
+            }
+            .photo {
+                background-image: url('photo.jpg');
+                background-repeat: no-repeat;
+                background-size: cover;
+                width: 100%;
+                height: 100vh;
+                z-index: 2;
+                position: relative;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="video-container">
+        <video src="./mon_peti_logo.mp4" autoplay loop muted ></video>
+    </div>
+    <div class="content-container">
+        <img src="./фон_клубника.png" alt="">
+    </div>
+    <script type="text/javascript">
+        var video = document.querySelector('video');
+        video.addEventListener('loadedmetadata', function() {
+            setTimeout(function() {
+                document.body.classList.add('show-content');
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
